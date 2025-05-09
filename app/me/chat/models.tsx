@@ -6,7 +6,7 @@ import {
 	ChevronDoubleLeftIcon,
 	ChevronDoubleRightIcon,
 } from "@heroicons/react/24/solid";
-import { use, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Models({ models }: { models: Model[] }) {
 	const ref = useRef<HTMLOListElement>(null);
@@ -22,7 +22,7 @@ export default function Models({ models }: { models: Model[] }) {
 			);
 			ref.current.replaceChildren(...sorted);
 		}
-	}, [, models, setModels]);
+	});
 
 	return (
 		<aside

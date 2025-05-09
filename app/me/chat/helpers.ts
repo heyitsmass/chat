@@ -1,8 +1,8 @@
 "use server";
 import { createClient } from "@/utils/supabase/server";
-import { Model, UserConversation } from "../../types";
-import { generateText } from "ai";
 import { groq } from "@ai-sdk/groq";
+import { generateText } from "ai";
+import { Model } from "../../types";
 
 export async function getModelsByProvider<T extends string>(provider: T) {
 	const supabase = await createClient();

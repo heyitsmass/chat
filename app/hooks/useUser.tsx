@@ -1,11 +1,10 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
-import { useCallback, useEffect, useState } from "react";
-import { type UserProfile, UserConversation } from "../types";
 import { redirect, usePathname } from "next/navigation";
-import { generateText } from "ai";
+import { useCallback, useEffect, useState } from "react";
 import { generateSummary } from "../me/chat/helpers";
+import { type UserProfile, UserConversation } from "../types";
 
 const supabase = createClient();
 const getUserData = async <T,>(
@@ -63,11 +62,11 @@ export function useUser() {
 		} finally {
 			setLoading(false);
 		}
-	}, [supabase]);
+	}, [pathname]);
 
 	useEffect(() => {
 		getUser();
-	}, []);
+	});
 
 	const save = useCallback(
 		async (
@@ -124,7 +123,7 @@ export function useUser() {
 
 			setUsage((prev) => prev + usage);
 		},
-		[user, supabase, usage, conversations]
+		[user, conversations]
 	);
 
 	return [

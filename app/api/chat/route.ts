@@ -3,7 +3,6 @@ import { UserProfile } from "@/app/types";
 import { createClient } from "@/utils/supabase/server";
 import { groq } from "@ai-sdk/groq";
 import { streamText } from "ai";
-import { NextResponse } from "next/server";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
