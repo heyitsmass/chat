@@ -1,20 +1,20 @@
 import { UserConversation } from "@/app/types";
 import {
-	ChevronDoubleLeftIcon,
 	ChevronDoubleRightIcon,
+	ChevronDoubleLeftIcon,
 	EllipsisVerticalIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import Select from "react-select/base";
 
 const Conversation = ({ ...convo }: UserConversation) => {
 	const [ellipsisHovered, setEllipsesHovered] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
-
-	/**const options = [
+	const options = [
 		{ value: "delete", label: "Delete" },
 		{ value: "rename", label: "Rename" },
 		{ value: "pin", label: convo.pinned ? "Unpin" : "pin" },
-	];*/
+	];
 	return (
 		<li
 			key={convo.id}

@@ -34,7 +34,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 				setWebsite(data.website);
 				setAvatarUrl(data.avatar_url);
 			}
-		} catch  {
+		} catch (error) {
 			redirect("/login");
 		} finally {
 			setLoading(false);
@@ -68,7 +68,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 			});
 			if (error) throw error;
 			alert("Profile updated!");
-		} catch {
+		} catch (error) {
 			alert("Error updating the data!");
 		} finally {
 			setLoading(false);

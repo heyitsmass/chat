@@ -14,8 +14,8 @@ export default function Chat({
 	models: Promise<Model[]>;
 }) {
 	const models = use(modelsPromise);
-	const { selectedModel } = useModel();
-	const [, , conversations, loading, , , save] = useUser();
+	const { selectedModel, model } = useModel();
+	const [, profile, conversations, loading, usage, , save] = useUser();
 
 	const { messages, input, handleInputChange, handleSubmit, id } = useChat({
 		body: {

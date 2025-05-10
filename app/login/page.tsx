@@ -18,7 +18,7 @@ export default function LoginPage() {
 				<Suspense>{isLogin ? <LoginForm /> : <SignupForm />}</Suspense>
 				{isLogin ? (
 					<p>
-						Don&apos;t have an account?{" "}
+						Don't have an account?{" "}
 						<a className="cursor-pointer hover:underline hover:text-indigo-400" onClick={() => setIsLogin(false)}>
 							Sign up
 						</a>

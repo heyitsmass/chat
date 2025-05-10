@@ -1,5 +1,5 @@
 import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/24/outline";
-import { signup } from "./actions";
+import { login, signup } from "./actions";
 
 export default function SignupForm() {
 	const errorMessage = null;

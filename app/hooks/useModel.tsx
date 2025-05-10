@@ -8,7 +8,7 @@ export const useModel = create<
 		setModels: (models: Model[]) => void;
 	}
 >()(
-	immer((set) => {
+	immer((set, get) => {
 		return {
 			selectedModel: "llama-3.3-70b-versatile",
 			models: [],
