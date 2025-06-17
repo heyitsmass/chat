@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+.neuomorphic {
+    --blur: 60px;
+    --textColor: #001f3f;
+    --textColorOpposite: #f6f5f7;
+    --baseColor: #aab7ea;
+    --darkColor: #dadada;
+    --firstGradientColor: #dadada;
+    --lightColor: #adadad;
+    --secondGradientColor: #adadad;
+    --positionX: 30px;
+    --positionXOpposite: -30px;
+    --positionY: 30px;
+    --positionYOpposite: -30px;
+    --angle: 145deg;
+    --size: 150px;
+    --radius: 30px;
+    --lightgray: #e8e8e8;
+    --border-radius: 10px;
+    --semibold: 600;
+    --offwhite: #f2f2f2;
+    --grey: #9c9c9c;
+    --blue-grey-1: #9fa3af;
+    --blue-grey-2: #bbbec9be;
+    --secondary-grey-light: #dcdcdc;
+    --maindark: #171717;
+    --dark: #212121;
+    --darker: #111111;
+    color: var(--textColor);
+    font-family: "Noto Sans JP", sans-serif;
+
+    padding-top: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--baseColor);
+
+
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 0;
+
+}
+
+@media only screen and (min-height: 800px) {
+    body {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    body {
+        padding-top: 10px;
+    }
+}
+
+.soft-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: var(--size);
+    height: var(--size);
+    border-radius: var(--radius);
+}
+
+.soft-shadow {
+    background: linear-gradient(var(--angle),
+            var(--firstGradientColor),
+            var(--secondGradientColor));
+    box-shadow: var(--positionX) var(--positionY) var(--blur) var(--darkColor),
+        var(--positionXOpposite) var(--positionYOpposite) var(--blur) var(--lightColor);
+}
+
+.soft-shadow.pressed {
+    box-shadow: inset var(--positionX) var(--positionY) var(--blur) var(--darkColor),
+        inset var(--positionXOpposite) var(--positionYOpposite) var(--blur) var(--lightColor);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+@media only screen and (min-width: 1200px) {
+    .title {
+        margin-bottom: 60px;
+        margin-top: 0;
+    }
+
+    .title h1 {
+        font-size: 35px;
+    }
+
+    .title h2 {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 680px) and (max-height: 800px) {
+    .title {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .title h1 {
+        font-size: 22px;
+    }
+
+    .title h2 {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 680px) and (max-height: 620px) {
+    .title h1 {
+        display: none;
+    }
+
+    .title h2 {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .title {
+        display: none;
+    }
+
+    .title h2 {
+        display: none;
+    }
+}
+
+.title h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.title h2 {
+    font-weight: normal;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 21px;
+}
+
+.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Utility classes for compatibility */
+.opacity-60 {
+    opacity: 0.6;
+}

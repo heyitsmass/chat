@@ -1,9 +1,8 @@
 // app/api/chat/route.ts
-import { UserProfile } from "@/app/types";
-import { createClient } from "@/utils/supabase/server";
+import { Profile } from "@/app/utils/types";
+import { createClient } from "@/lib/utils/supabase/server";
 import { groq } from "@ai-sdk/groq";
-import { streamText } from "ai";
-import { NextResponse } from "next/server";
+import { convertToModelMessages, streamText } from "ai";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -16,12 +15,9 @@ export async function POST(req: Request) {
 	} = await supabase.auth.getUser();
 
 	if (user) {
-		const { data } = await supabase
-			.from("profiles")
-			.select()
-			.eq("id", user.id);
+		const { data } = await supabase.from("profiles").select().eq("id", user.id);
 		if (data) {
-			const profile = data[0] as UserProfile;
+			const profile = data[0] as Profile;
 			if (profile.token_usage >= profile.token_limit)
 				throw new Error("Maximum token allowance met.");
 		}
@@ -33,9 +29,9 @@ export async function POST(req: Request) {
 	// Call the language model
 	const result = streamText({
 		model: groq(model),
-		messages,
+		messages: convertToModelMessages(messages),
 	});
 
 	// Respond with the stream
-	return result.toDataStreamResponse();
+	return result.toUIMessageStreamResponse();
 }
